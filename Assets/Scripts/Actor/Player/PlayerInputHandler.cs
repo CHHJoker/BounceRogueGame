@@ -20,5 +20,14 @@ namespace Actor.Player
 
             return mouseReleased || touchReleased;
         }
+
+        public Vector2? GetMouseScreenPos()
+        {
+            if (Mouse.current == null) return null;
+
+            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+            return mouseScreenPos;
+
+        }
     }
 }
