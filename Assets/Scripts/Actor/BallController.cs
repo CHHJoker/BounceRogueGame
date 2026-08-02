@@ -52,7 +52,8 @@ namespace Actor
 
         private void CheckIfEnteredPlayArea()
         {
-            if (hasEnteredPlayArea || bottomWallCollider == null) return;
+            if (hasEnteredPlayArea || bottomWallCollider == null)
+                return;
             
             float upperEdgeZ = bottomWallCollider.bounds.max.z;
             if (transform.position.z > upperEdgeZ)
