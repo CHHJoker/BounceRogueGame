@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 902191748}
   - component: {fileID: 902191747}
   - component: {fileID: 902191746}
+  - component: {fileID: 902191750}
   - component: {fileID: 902191745}
   - component: {fileID: 902191749}
   m_Layer: 0
@@ -1023,7 +1024,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902191744}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3587c05c62e8c874aa14968b57a6796a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1136,6 +1137,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &902191750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902191744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a7559b2500cee49a833a9c4115066f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actor.BallController
+  launchSpeed: 12
 --- !u!1001 &1360641062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1222,6 +1236,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1360641064}
+    - targetCorrespondingSourceObject: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1360641074}
   m_SourcePrefab: {fileID: 100100000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
 --- !u!1 &1360641063 stripped
 GameObject:
@@ -1253,6 +1270,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Actor.Player.PlayerController
   targetIndicator: {fileID: 222549773}
+--- !u!114 &1360641074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360641063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3a2a555a1059344adb2057831587d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actor.Player.BallLauncher
+  ball: {fileID: 902191750}
 --- !u!1 &1683120002
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ namespace Actor.Player
         [SerializeField] private TargetIndicator targetIndicator;
 
         private PlayerInputHandler playerInputHandler;
+        private BallLauncher ballLauncher;
 
         private Vector3 startPos;
         private Vector3 targetPos;
@@ -15,6 +16,7 @@ namespace Actor.Player
         private void Awake()
         {
             playerInputHandler = GetComponent<PlayerInputHandler>();
+            ballLauncher = GetComponent<BallLauncher>();
         }
 
         private void Update()
@@ -30,7 +32,7 @@ namespace Actor.Player
 
             if (playerInputHandler.IsInputReleasedThisFrame())
             {
-
+                LaunchBall();
             }
         }
 
@@ -52,9 +54,16 @@ namespace Actor.Player
             startPos.y = GameConstants.GROUND_Y_POSITION;
 
             targetPos = targetIndicator.CurrentTargetPointPosition;
-            targetPos.y = GameConstants.GROUND_Y_POSITION;
 
             launchDirection = (targetPos - startPos).normalized;
+        }
+
+        private void LaunchBall()
+        {
+            if (ballLauncher == null)
+                return;
+
+            ballLauncher.LaunchBall(launchDirection);
         }
     }
 }
