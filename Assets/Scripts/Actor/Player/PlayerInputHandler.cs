@@ -27,7 +27,6 @@ namespace Actor.Player
 
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             return mouseScreenPos;
-
         }
     }
 }
