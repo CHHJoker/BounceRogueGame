@@ -7,11 +7,15 @@ namespace Actor
         [Header("Launch Settings")]
         [SerializeField] private float launchSpeed = 12f;
 
+        [Header("Bottom Wall Collider")]
+        [SerializeField] private Collider bottomWallCollider;
+
         private Rigidbody rb;
 
         private Vector3 currentVelocity;
 
         private bool isLaunched = false;
+        public bool hasEnteredPlayArea = false;
 
         private void Awake()
         {
@@ -22,10 +26,20 @@ namespace Actor
         {
             if (!isLaunched) return;
 
+            CheckIfEnteredPlayArea();
+
             EnforceBallYPosition();
             SetCurrentVelocity();
             PreventInfiniteLoopBounce();
             MaintainConstantSpeed();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (isLaunched && hasEnteredPlayArea && other == bottomWallCollider)
+            {
+                ResetBall();
+            }
         }
 
         public void Launch(Vector3 launchDirection)
@@ -33,6 +47,18 @@ namespace Actor
             rb.linearVelocity = launchDirection * launchSpeed;
 
             isLaunched = true;
+            hasEnteredPlayArea = false;
+        }
+
+        private void CheckIfEnteredPlayArea()
+        {
+            if (hasEnteredPlayArea || bottomWallCollider == null) return;
+            
+            float upperEdgeZ = bottomWallCollider.bounds.max.z;
+            if (transform.position.z > upperEdgeZ)
+            {
+                hasEnteredPlayArea = true;
+            }
         }
 
         private void EnforceBallYPosition()
@@ -69,6 +95,14 @@ namespace Actor
         private void MaintainConstantSpeed()
         {
             rb.linearVelocity = currentVelocity.normalized * launchSpeed;
+        }
+
+        private void ResetBall()
+        {
+            isLaunched = false;
+            hasEnteredPlayArea = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 }

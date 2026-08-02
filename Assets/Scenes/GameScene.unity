@@ -751,7 +751,7 @@ Transform:
   m_GameObject: {fileID: 591692189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3, y: -0, z: 0}
+  m_LocalPosition: {x: 1.3, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -863,7 +863,7 @@ Transform:
   m_GameObject: {fileID: 723370262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1.5}
   m_LocalScale: {x: 3, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1149,7 +1149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a7559b2500cee49a833a9c4115066f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Actor.BallController
-  launchSpeed: 12
+  launchSpeed: 8
+  bottomWallCollider: {fileID: 2057110580}
+  hasEnteredPlayArea: 0
 --- !u!1001 &1360641062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1403,7 +1405,7 @@ Transform:
   m_GameObject: {fileID: 2000115679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3, y: -0, z: 0}
+  m_LocalPosition: {x: -1.3, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1515,7 +1517,7 @@ Transform:
   m_GameObject: {fileID: 2057110578}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -1.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: -1.5}
   m_LocalScale: {x: 3, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1536,7 +1538,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
