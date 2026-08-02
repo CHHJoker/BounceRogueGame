@@ -856,11 +856,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400084, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400088, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419662, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1360641065}
+    - targetCorrespondingSourceObject: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1360641064}
   m_SourcePrefab: {fileID: 100100000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+--- !u!1 &1360641063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+  m_PrefabInstance: {fileID: 1360641062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360641064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360641063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba686220054c8e49bab25d116b07315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actor.Player.PlayerInputHandler
+--- !u!114 &1360641065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360641063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae63775c662a3d49a37cfd4d041876e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actor.Player.PlayerController
 --- !u!1 &2000115679
 GameObject:
   m_ObjectHideFlags: 0
