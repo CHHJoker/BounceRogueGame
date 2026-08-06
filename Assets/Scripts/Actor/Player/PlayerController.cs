@@ -51,9 +51,10 @@ namespace Actor.Player
         private void CalculateLaunchDirection()
         {
             startPos = transform.position;
-            startPos.y = GameConstants.GROUND_Y_POSITION;
+            startPos.y = GameConstants.BALL_Y_POSITION;
 
             targetPos = targetIndicator.CurrentTargetPointPosition;
+            targetPos.y = GameConstants.BALL_Y_POSITION;
 
             launchDirection = (targetPos - startPos).normalized;
         }
@@ -63,7 +64,7 @@ namespace Actor.Player
             if (ballLauncher == null)
                 return;
 
-            ballLauncher.LaunchBall(launchDirection);
+            ballLauncher.LaunchBall(startPos, launchDirection);
         }
     }
 }

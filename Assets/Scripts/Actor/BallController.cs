@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Actor
@@ -6,6 +7,7 @@ namespace Actor
     {
         [Header("Launch Settings")]
         [SerializeField] private float launchSpeed = 12f;
+        [SerializeField] private float returnSpeed = 15f;
 
         [Header("Bottom Wall Collider")]
         [SerializeField] private Collider bottomWallCollider;
@@ -13,9 +15,11 @@ namespace Actor
         private Rigidbody rb;
 
         private Vector3 currentVelocity;
+        private Vector3 returnPosition;
 
         private bool isLaunched = false;
         public bool hasEnteredPlayArea = false;
+        private bool isReturning = false;
 
         private void Awake()
         {
@@ -24,7 +28,7 @@ namespace Actor
 
         private void FixedUpdate()
         {
-            if (!isLaunched) return;
+            if (!isLaunched || isReturning) return;
 
             CheckIfEnteredPlayArea();
 
@@ -36,18 +40,25 @@ namespace Actor
 
         private void OnTriggerEnter(Collider other)
         {
-            if (isLaunched && hasEnteredPlayArea && other == bottomWallCollider)
+            if (isLaunched 
+                && hasEnteredPlayArea
+                && !isReturning
+                && other == bottomWallCollider)
             {
-                ResetBall();
+                StartCoroutine(ReturnToTargetRoutine());
             }
         }
 
-        public void Launch(Vector3 launchDirection)
+        public void Launch(Vector3 launchDirection, Vector3 returnPos)
         {
+            if (isReturning) return;
+
+            returnPosition = returnPos;
             rb.linearVelocity = launchDirection * launchSpeed;
 
             isLaunched = true;
             hasEnteredPlayArea = false;
+            isReturning = false;
         }
 
         private void CheckIfEnteredPlayArea()
@@ -98,12 +109,31 @@ namespace Actor
             rb.linearVelocity = currentVelocity.normalized * launchSpeed;
         }
 
-        private void ResetBall()
+        private IEnumerator ReturnToTargetRoutine()
         {
-            isLaunched = false;
-            hasEnteredPlayArea = false;
+            isReturning = true;
+
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+
+            while (Vector3.Distance(transform.position, returnPosition) > 0.05f)
+            {
+                Vector3 pos = returnPosition;
+                pos.y = GameConstants.BALL_Y_POSITION;
+
+                transform.position = Vector3.MoveTowards(transform.position, pos, returnSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            Vector3 finalPos = returnPosition;
+            finalPos.y = GameConstants.BALL_Y_POSITION;
+            transform.position = finalPos;
+
+            rb.isKinematic = false;
+            isLaunched = false;
+            hasEnteredPlayArea = false;
+            isReturning = false;
         }
     }
 }
