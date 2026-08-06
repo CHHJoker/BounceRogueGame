@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Actor
 {
-    public class BallController : MonoBehaviour
+    public class Ball : MonoBehaviour
     {
         [Header("Launch Settings")]
         [SerializeField] private float launchSpeed = 12f;

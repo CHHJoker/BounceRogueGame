@@ -5,7 +5,7 @@ namespace Actor.Player
     public class BallLauncher : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private BallController ball;
+        [SerializeField] private Ball ball;
 
         public void LaunchBall(Vector3 returnPos, Vector3 launchDirection)
         {

@@ -37,7 +37,7 @@ namespace Actor
             if (stageGroundPlane.Raycast(ray, out float enterDistance))
             {
                 Vector3 worldHitPoint = ray.GetPoint(enterDistance);
-                worldHitPoint.y = GameConstants.GROUND_Y_POSITION;
+                worldHitPoint.y = GameConstants.BALL_Y_POSITION;
 
                 CurrentTargetPointPosition = worldHitPoint;
 
